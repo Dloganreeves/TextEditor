@@ -1,0 +1,47 @@
+<div class="row align-items-center"style="background-color: antiquewhite; height: 5vh">
+    <div class="col-1 offset-4">
+        <select id="fontStyle">
+            <option value="'Arial', sans-serif">Arial</option>
+            <option value="'Courier New', monospace">Courier</option>
+            <option value="'Times New Roman', serif">Times New Roman</option>
+        </select>
+ </div>
+ 
+    <div class="col-1">
+        <select id="fontSize">
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>14</option>
+            <option>18</option>
+            <option>24</option>
+            <option>30</option>
+            <option>36</option>
+            <option>48</option>
+            <option>60</option>
+            <option>72</option>
+            <option>96</option>
+        </select>
+    </div>
+<div class="col-1">
+        <button (click)= "ToggleBold()" style="margin: 1%;">B</button>
+        <button style="margin: 1%;">I</button>
+        <button style="margin: 1%;">U</button>
+
+    </div>
+    <div class="col-1">
+        <button style="margin: 1%;"><u>A</u></button>
+        <button style="margin: 1%;">&#9999;</button>
+    </div>
+
+
+</div>
+<div class="row" style="height: 100vh;">
+    <div class="col-3 g-0" style="background-color: gray;"></div>
+    <div class="col g-0" style="height: 100%;">
+        <textarea #TextDoc [appTextToggle]='IsBold' id="doc" style="height: 100%; width: 100%; outline: 0;"></textarea>
+    </div>
+    <div class="col-3 g-0" style="background-color: gray;"></div>
+</div>
