@@ -1,14 +1,25 @@
 import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DocComponent } from '../Component/doc/doc.component';
 
 
 @Directive({
-  selector: '[appTextToggle]',
+  selector: '[TextToggle]',
   standalone: true
 })
+
 export class TextToggleDirective {
 
   constructor(private el: ElementRef, private renderer: Renderer2) { }
-  @Input() set appBold(IsBold: boolean) { this.renderer.setStyle(this.el.nativeElement, 'font-weight', IsBold ? 'bold' : 'normal'); }
+
+  @Input() set TextToggle(isBold: boolean) { 
+    this.renderer.setStyle(this.el.nativeElement, 'font-weight', isBold ? 'bold' : 'normal'); 
+  }
+
+  @Input() set ItalicsToggle(isItalics: boolean) { 
+    this.renderer.setStyle(this.el.nativeElement, 'font-style', isItalics ? 'italic' : 'normal'); 
+  }
+
+  @Input() set UnderlineToggle(isUnderlined: boolean) { 
+    this.renderer.setStyle(this.el.nativeElement, 'text-decoration', isUnderlined ? 'underline' : 'none'); 
+  }
+
 }

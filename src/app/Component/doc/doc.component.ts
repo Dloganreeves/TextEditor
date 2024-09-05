@@ -1,19 +1,35 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TextToggleDirective } from '../../Directives/text-toggle.directive';import { CommonModule } from '@angular/common';
-;
+import { CommonModule } from '@angular/common';
+import { TextToggleDirective } from '../../Directives/text-toggle.directive';
+
 
 @Component({
   selector: 'app-doc',
   standalone: true,
-  imports: [RouterOutlet,TextToggleDirective,CommonModule],
+  imports: [RouterOutlet, CommonModule, TextToggleDirective],
   templateUrl: './doc.component.html',
-  styleUrl: './doc.component.css',
+  styleUrl: './doc.component.css'
 })
 export class DocComponent {
-@ViewChild('TextDoc') TextDoc!: ElementRef
-IsBold: boolean = false
+@ViewChild('TextDoc') TextDoc!: ElementRef;
+
+isBold: boolean = false;
+
+isItalics: boolean = false;
+
+isUnderlined: boolean = false;
+
 ToggleBold() {
-  this.IsBold = !this.IsBold
+  this.isBold = !this.isBold;
 }
+
+ToggleItalics() {
+  this.isItalics = !this.isItalics;
+}
+
+ToggleUnderline() {
+  this.isUnderlined = !this.isUnderlined;
+}
+
 }

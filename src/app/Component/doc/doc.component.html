@@ -26,9 +26,9 @@
         </select>
     </div>
 <div class="col-1">
-        <button (click)= "ToggleBold()" style="margin: 1%;">B</button>
-        <button style="margin: 1%;">I</button>
-        <button style="margin: 1%;">U</button>
+        <button (click)="ToggleBold()" style="margin: 1%;">B</button>
+        <button (click)="ToggleItalics()" style="margin: 1%;">I</button>
+        <button (click)="ToggleUnderline()" style="margin: 1%;">U</button>
 
     </div>
     <div class="col-1">
@@ -41,7 +41,11 @@
 <div class="row" style="height: 100vh;">
     <div class="col-3 g-0" style="background-color: gray;"></div>
     <div class="col g-0" style="height: 100%;">
-        <textarea #TextDoc [appTextToggle]='IsBold' id="doc" style="height: 100%; width: 100%; outline: 0;"></textarea>
+        <textarea #TextDoc id="doc" style="height: 100%; width: 100%; outline: 0;"
+        [TextToggle]="isBold"
+        [ItalicsToggle]="isItalics"
+        [UnderlineToggle]="isUnderlined"
+        ></textarea>
     </div>
     <div class="col-3 g-0" style="background-color: gray;"></div>
 </div>
