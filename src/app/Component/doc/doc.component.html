@@ -1,9 +1,7 @@
 <div class="row align-items-center"style="background-color: antiquewhite; height: 5vh">
     <div class="col-1 offset-4">
-        <select id="fontStyle">
-            <option value="'Arial', sans-serif">Arial</option>
-            <option value="'Courier New', monospace">Courier</option>
-            <option value="'Times New Roman', serif">Times New Roman</option>
+        <select [(ngModel)]="selectedFont">
+            <option *ngFor="let font of fonts" [value]= "font">{{font}}</option>
         </select>
  </div>
  
@@ -45,6 +43,7 @@
         [TextToggle]="isBold"
         [ItalicsToggle]="isItalics"
         [UnderlineToggle]="isUnderlined"
+        [Font]="selectedFont"
         ></textarea>
     </div>
     <div class="col-3 g-0" style="background-color: gray;"></div>
