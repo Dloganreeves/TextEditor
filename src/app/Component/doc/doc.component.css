@@ -1,0 +1,14 @@
+.noPadding{
+    padding: 0;
+}
+
+.smallMargin{
+    margin: 1%;
+}
+
+.colorSelect{
+    height: .6vh;
+    width: 1.5vw;
+    border: 0;
+    padding: 0;
+}

@@ -1,49 +1,59 @@
-<div class="row align-items-center"style="background-color: antiquewhite; height: 5vh">
-    <div class="col-1 offset-4">
-        <select [(ngModel)]="selectedFont">
-            <option *ngFor="let font of fonts" [value]= "font">{{font}}</option>
+<div class="row align-items-center"style="background-color: antiquewhite; height: 5vh;">
+    
+    <div class="col-2 offset-3 noPadding">
+        <select [(ngModel)]="selectedFont" style="width: 12vw">
+            <option *ngFor="let font of fonts" [value]="font">{{font}}</option>
         </select>
- </div>
+    </div>
  
-    <div class="col-1">
-        <select id="fontSize">
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-            <option>14</option>
-            <option>18</option>
-            <option>24</option>
-            <option>30</option>
-            <option>36</option>
-            <option>48</option>
-            <option>60</option>
-            <option>72</option>
-            <option>96</option>
+    <div class="col-1 noPadding">
+        <select [(ngModel)]="selectedSize">
+             <option [value]="'.8rem'">8</option>
+             <option [value]="'.85rem'">9</option>
+            <option [value]="'.9rem'">10</option>
+            <option [value]="'.95rem'">11</option>
+            <option [value]="'1rem'">12</option>
+            <option [value]="'1.1rem'">14</option>
+            <option [value]="'1.25rem'">18</option>
+            <option [value]="'1.5rem'">24</option>
+            <option [value]="'1.75rem'">30</option>
+            <option [value]="'2rem'">36</option>
+            <option [value]="'2.5rem'">48</option>
+            <option [value]="'3rem'">60</option>
+            <option [value]="'3.5rem'">72</option>
+            <option [value]="'4.5rem'">96</option>
         </select>
     </div>
-<div class="col-1">
-        <button (click)="ToggleBold()" style="margin: 1%;">B</button>
-        <button (click)="ToggleItalics()" style="margin: 1%;">I</button>
-        <button (click)="ToggleUnderline()" style="margin: 1%;">U</button>
+<div class="col-1 noPadding">
+        <button (click)="ToggleBold()" class="smallMargin">B</button>
+        <button (click)="ToggleItalics()" class="smallMargin">I</button>
+        <button (click)="ToggleUnderline()" class="smallMargin">U</button>
 
     </div>
-    <div class="col-1">
-        <button style="margin: 1%;"><u>A</u></button>
-        <button style="margin: 1%;">&#9999;</button>
+    <div class="col-1 noPadding">
+        <div class="row" style="padding-left: .5vw;">
+            A
+        </div>
+        <div class="row">
+            <input #colorInput type="color" id="colorSelect" value="#000000" class="colorSelect" (change)="changeColor()">
+        </div>
     </div>
-
+    
+    <!-- <button class="smallMargin"><span><i class="bi bi-marker-tip"></i></span></button> -->
 
 </div>
-<div class="row" style="height: 100vh;">
+
+<!-- doc starts -->
+<div class="row" style="height: 92.5vh;">
     <div class="col-3 g-0" style="background-color: gray;"></div>
     <div class="col g-0" style="height: 100%;">
-        <textarea #TextDoc id="doc" style="height: 100%; width: 100%; outline: 0;"
+        <textarea #TextDoc id="doc" style="height: 100%; width: 100%; outline: 0; font-size: 1rem"
         [TextToggle]="isBold"
         [ItalicsToggle]="isItalics"
         [UnderlineToggle]="isUnderlined"
-        [Font]="selectedFont"
+        [EditText]="selectedFont"
+        [fontSize]="selectedSize"
+        [fontColor]="selectedColor"
         ></textarea>
     </div>
     <div class="col-3 g-0" style="background-color: gray;"></div>
