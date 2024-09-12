@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { TextToggleDirective } from '../../Directives/text-toggle.directive';
 import { EditTextDirective } from '../../Directives/edit-text.directive';
 import { FormsModule } from '@angular/forms';
+import { HighlightDirective } from '../../Directives/highlight.directive';
 
 
 @Component({
   selector: 'app-doc',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, TextToggleDirective, EditTextDirective, FormsModule],
+  imports: [RouterOutlet, CommonModule, TextToggleDirective, EditTextDirective, FormsModule, HighlightDirective],
   templateUrl: './doc.component.html',
   styleUrl: './doc.component.css'
 })
@@ -37,20 +38,20 @@ selectedColor: string = "#000000"
 
 //Methods
 
-ToggleBold() {
+ToggleBold(): void {
   this.isBold = !this.isBold;
   console.log(this.selectedColor);
 }
 
-ToggleItalics() {
+ToggleItalics(): void {
   this.isItalics = !this.isItalics;
 }
 
-ToggleUnderline() {
+ToggleUnderline(): void {
   this.isUnderlined = !this.isUnderlined;
 }
 
-changeColor() {
+changeColor(): void {
   this.selectedColor = this.colorInput.nativeElement.value; 
 }
 

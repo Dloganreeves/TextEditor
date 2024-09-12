@@ -47,14 +47,16 @@
 <div class="row" style="height: 92.5vh;">
     <div class="col-3 g-0" style="background-color: gray;"></div>
     <div class="col g-0" style="height: 100%;">
-        <textarea #TextDoc id="doc" style="height: 100%; width: 100%; outline: 0; font-size: 1rem"
+        <div #TextDoc id="doc" style="height: 100%; width: 100%; outline: 0; font-size: 1rem"
+        contenteditable="true"
+        appHighlight
         [TextToggle]="isBold"
         [ItalicsToggle]="isItalics"
         [UnderlineToggle]="isUnderlined"
         [EditText]="selectedFont"
         [fontSize]="selectedSize"
         [fontColor]="selectedColor"
-        ></textarea>
+        ></div>
     </div>
     <div class="col-3 g-0" style="background-color: gray;"></div>
 </div>
