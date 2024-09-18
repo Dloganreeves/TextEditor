@@ -37,23 +37,20 @@ selectedFont: string = this.fonts[0];
 selectedColor: string = "#000000"
 
 //Methods
-
-ToggleBold(): void {
-  this.isBold = !this.isBold;
-  console.log(this.selectedColor);
-}
-
-ToggleItalics(): void {
-  this.isItalics = !this.isItalics;
-}
-
-ToggleUnderline(): void {
-  this.isUnderlined = !this.isUnderlined;
-}
-
 changeColor(): void {
   this.selectedColor = this.colorInput.nativeElement.value; 
 }
 
+boldText() {
+  document.execCommand('bold')
+}
+
+italicText() {
+document.execCommand('italic')
+}
+
+underlineText() {
+  document.execCommand('underline')
+}
 
 }
