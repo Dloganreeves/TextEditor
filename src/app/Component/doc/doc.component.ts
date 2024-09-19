@@ -30,27 +30,72 @@ isUnderlined: boolean = false;
 
 fonts: string[] = ['Arial', 'Courier New', 'Georgia', 'Times New Roman', 'Verdana'];
 
-selectedSize: string = "1rem"; //default value
-
 selectedFont: string = this.fonts[0];
 
-selectedColor: string = "#000000"
+selectedColor: string = "#000000";
+
+savedSelection: Range | null = null;
+
+check: string = "";
 
 //Methods
-changeColor(): void {
-  this.selectedColor = this.colorInput.nativeElement.value; 
+
+changeColor(event: any) {
+  this.restoreSelection();
+  document.execCommand('foreColor', false, event.target.value);
+}
+
+highlight(event: any) {
+  this.restoreSelection();
+  document.execCommand('backColor', false, event.target.value);
+}
+
+changeSize(event: any) {
+  const size = (event.target as HTMLSelectElement).value;
+  this.check = size;  
+  console.log("check[changeSize]: " + this.check);
+  this.restoreSelection();
+  document.execCommand('fontSize', false, size);
+}
+
+test(event: any) {
+  console.log((event.target as HTMLSelectElement).value);
+  console.log("check: " + this.check);
+  if((event.target as HTMLSelectElement).value == this.check) {
+    this.restoreSelection();
+  document.execCommand('fontSize', false, this.check);
+  this.check = "";
+  }
 }
 
 boldText() {
-  document.execCommand('bold')
+  document.execCommand('bold');
 }
 
 italicText() {
-document.execCommand('italic')
+  document.execCommand('italic');
 }
 
 underlineText() {
-  document.execCommand('underline')
+  document.execCommand('underline');
 }
+
+saveSelection() {
+  const selection = window.getSelection();
+  if (selection && selection.rangeCount > 0) {
+    this.savedSelection = selection.getRangeAt(0);  
+  }
+}
+
+restoreSelection() {
+  if (this.savedSelection) {
+    const selection = window.getSelection();
+    if (selection) {
+      selection.removeAllRanges();
+      selection.addRange(this.savedSelection); 
+    }
+  }
+}
+
 
 }

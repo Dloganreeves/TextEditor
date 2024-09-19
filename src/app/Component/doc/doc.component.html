@@ -1,4 +1,7 @@
-<div class="row align-items-center"style="background-color: antiquewhite; height: 5vh;">
+<div class="row align-items-center"
+style="background-color: antiquewhite; height: 5vh;" 
+(mouseup)="saveSelection()"
+>
     
     <div class="col-2 offset-3 noPadding">
         <select [(ngModel)]="selectedFont" style="width: 12vw">
@@ -7,21 +10,14 @@
     </div>
  
     <div class="col-1 noPadding">
-        <select [(ngModel)]="selectedSize">
-             <option [value]="'.8rem'">8</option>
-             <option [value]="'.85rem'">9</option>
-            <option [value]="'.9rem'">10</option>
-            <option [value]="'.95rem'">11</option>
-            <option [value]="'1rem'">12</option>
-            <option [value]="'1.1rem'">14</option>
-            <option [value]="'1.25rem'">18</option>
-            <option [value]="'1.5rem'">24</option>
-            <option [value]="'1.75rem'">30</option>
-            <option [value]="'2rem'">36</option>
-            <option [value]="'2.5rem'">48</option>
-            <option [value]="'3rem'">60</option>
-            <option [value]="'3.5rem'">72</option>
-            <option [value]="'4.5rem'">96</option>
+        <select (click)="test($event)" (change)="changeSize($event)">
+            <option value='1'>xxs</option>
+            <option value='2'>xs</option>
+            <option value='3'>s</option>
+            <option selected value='4'>m</option>
+            <option value='5'>l</option>
+            <option value='6'>xl</option>
+            <option value='7'>xxl</option>
         </select>
     </div>
 <div class="col-1 noPadding">
@@ -35,12 +31,20 @@
             A
         </div>
         <div class="row">
-            <input #colorInput type="color" id="colorSelect" value="#000000" class="colorSelect" (change)="changeColor()">
+            <input #colorInput type="color" id="colorSelect" value="#000000" 
+            class="colorSelect" (change)="changeColor($event)">
+        </div>
+    </div>
+    <div class="col">
+        <div class="row">
+            <i class="bi bi-marker-tip"></i>
+        </div>
+        <div class="row">
+            <input #highlightInput type="color" id="highlightSelect" value="#FFFF00" 
+            class="colorSelect" (change)="highlight($event)">
         </div>
     </div>
     
-    <!-- <button class="smallMargin"><span><i class="bi bi-marker-tip"></i></span></button> -->
-
 </div>
 
 <!-- doc starts -->
@@ -49,13 +53,12 @@
     <div class="col g-0" style="height: 100%;">
         <div #TextDoc id="doc" style="height: 100%; width: 100%; outline: 0; font-size: 1rem"
         contenteditable="true"
-        appHighlight
         [TextToggle]="isBold"
         [ItalicsToggle]="isItalics"
         [UnderlineToggle]="isUnderlined"
         [EditText]="selectedFont"
-        [fontSize]="selectedSize"
         [fontColor]="selectedColor"
+        (mouseup)="saveSelection()"
         ></div>
     </div>
     <div class="col-3 g-0" style="background-color: gray;"></div>
